@@ -2,7 +2,7 @@
 
 > **Capstone Project Submission**  
 > **Track:** Freestyle / Agents for Good (Education)  
-> **Tech Stack:** Python, Streamlit, Google Gemini 1.5 Flash
+> **Tech Stack:** Python, Streamlit, Google Gemini 2.5 Flash
 
 ![Status](https://img.shields.io/badge/Status-Deployed-success)
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
