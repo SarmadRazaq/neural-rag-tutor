@@ -40,3 +40,42 @@ graph TD
     
     Grader -->|Log Metric| Observability[📊 Observability Tool]
     Tutor -->|Log Metric| Observability
+
+
+
+
+
+
+    🔑 Key Features (Rubric Alignment)
+This project demonstrates mastery of 5 Key Concepts from the Agent course:
+
+1. Multi-Agent System (Sequential & Specialized)
+Professor Agent: Uses "One-Shot Prompting" to generate structured JSON questions (Text or MCQ) strictly from the provided context. Includes self-correction logic to ensure the answer key matches the options.
+
+HybridQA Agent: A router that decides whether to answer from the PDF (citing sources) or use General Knowledge.
+
+Tutor Agent: Provides pedagogical scaffolding (hints) without revealing answers.
+
+Grader Agent: Performs semantic evaluation, comparing the user's input against the model's answer key using fuzzy matching logic.
+
+2. Custom Tools
+DocumentIngestionTool: A custom Python class that handles binary PDF stream processing, sanitizes text, and prepares it for the context window.
+
+ObservabilityTool: A custom instrumentation class that tracks agent latency (speed) and execution frequency, visualizing real-time metrics in a sidebar dashboard.
+
+EvaluationTool: Implements "Human-in-the-loop" reinforcement, allowing users to rate questions (Thumbs Up/Down) to log quality metrics.
+
+3. Sessions & Memory (Persistence)
+Persistence: Uses a SessionManager to serialize user state (user_session_state.json) to disk. This ensures that scores, chat history, and uploaded documents survive page reloads.
+
+Memory Bank: Maintains a rigorous history of past quiz questions, allowing users to review their mistakes.
+
+4. Context Engineering (Compaction)
+Context Fusion: Dynamically merges textbook data with conversation history based on user selection.
+
+Compression: A background logic (ContextCompressor) summarizes chat logs if they exceed 5 turns, ensuring the LLM context window remains optimized for speed and cost.
+
+5. Observability & Evaluation
+Real-time Dashboard: A sidebar panel shows Total Agent Calls, Average Latency, and an "Agent Quality Score".
+
+Feedback Loop: Users can rate generated questions (Thumbs Up/Down), providing signal for future fine-tuning.
