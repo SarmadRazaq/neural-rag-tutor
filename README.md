@@ -1,14 +1,15 @@
 # 🧠 Neural RAG Tutor: The Active Recall Agent
 
-> **Capstone Project Submission** > **Track:** Freestyle / Agents for Good (Education)  
+> **Capstone Project Submission**
+> **Track:** Freestyle / Agents for Good (Education)
 > **Tech Stack:** Python, Streamlit, Google Gemini 1.5 Flash
 
-![Banner Image](https://img.shields.io/badge/Status-Deployed-success) ![Python](https://img.shields.io/badge/Python-3.9%2B-blue) ![Streamlit](https://img.shields.io/badge/Streamlit-1.31-red)
+![Status](https://img.shields.io/badge/Status-Deployed-success) ![Python](https://img.shields.io/badge/Python-3.9%2B-blue) ![Streamlit](https://img.shields.io/badge/Streamlit-1.31-red) ![AI](https://img.shields.io/badge/Gemini-1.5%20Flash-orange)
 
 ## 📖 Overview
-**Neural RAG Tutor** transforms static PDF textbooks into interactive exams using a multi-agent system. Unlike standard chatbots, it fuses "Static Context" (uploaded PDFs) with "Dynamic Context" (your chat history) to create a personalized study loop.
+**Neural RAG Tutor** is an autonomous "Exam Prep" engine that transforms static PDF textbooks into interactive exams. Unlike standard chatbots, it utilizes a **Multi-Source Data Fusion** engine to combine your "Static Context" (uploaded PDFs) with your "Dynamic Context" (chat history), creating a personalized study loop.
 
-It addresses the problem of **"Passive Review"** by forcing Active Recall through generated quizzes, hints, and immediate semantic grading.
+It solves **"Passive Review Syndrome"** by enforcing Active Recall through generated quizzes, pedagogical hints, and semantic grading.
 
 ## 🚀 Live Demo
 **[Click here to view the Deployed App]** *(Replace this text with your Streamlit Share URL)*
@@ -17,7 +18,7 @@ It addresses the problem of **"Passive Review"** by forcing Active Recall throug
 
 ## ⚙️ System Architecture
 
-The system utilizes a **Sequential Multi-Agent Architecture** orchestrated by Streamlit's state engine.
+The system utilizes a **Sequential Multi-Agent Architecture** with a human-in-the-loop feedback mechanism.
 
 ```mermaid
 graph TD
