@@ -42,40 +42,91 @@ graph TD
     Tutor -->|Log Metric| Observability
 
 
+# 📚 Neural RAG Tutor — Multi-Agent Study Buddy
+
+## 🔑 Key Features (Rubric Alignment)
+
+This project demonstrates mastery of **5 Key Concepts** from the Agent course:
+
+### **1. Multi-Agent System (Sequential & Specialized)**
+- **Professor Agent:** Uses *One-Shot Prompting* to generate structured JSON questions (Text or MCQ) strictly from the provided context. Includes *self-correction logic* to ensure the answer key always matches the options.
+- **HybridQA Agent:** Routes queries, deciding whether to answer using PDF context (with citations) or General Knowledge.
+- **Tutor Agent:** Provides learning hints without revealing answers.
+- **Grader Agent:** Performs semantic evaluation using fuzzy matching to compare the user's answer against the correct one.
+
+### **2. Custom Tools**
+- **DocumentIngestionTool:** Processes binary PDF streams, sanitizes text, and prepares it for model context inputs.
+- **ObservabilityTool:** Logs agent latency & execution frequency and displays real-time metrics via a sidebar dashboard.
+- **EvaluationTool:** Enables *Human-in-the-loop reinforcement* by storing user feedback (👍 / 👎) on question quality.
+
+### **3. Sessions & Memory (Persistence)**
+- **SessionManager:** Saves user state (`user_session_state.json`) to preserve chat history, scores, and uploaded files across reloads.
+- **Memory Bank:** Stores past quiz questions and answers for later review.
+
+### **4. Context Engineering (Compaction)**
+- **Context Fusion:** Dynamically merges PDF textbook data and chat history based on user selection.
+- **ContextCompressor:** Summarizes long chat logs when >5 turns to reduce token cost and improve speed.
+
+### **5. Observability & Evaluation**
+- **Real-time Dashboard:** Shows Total Agent Calls, Average Latency, and *Agent Quality Score*.
+- **Feedback Loop:** User ratings influence future training via quality logging.
+
+---
+
+## 🛠️ Installation & Setup
+
+### **1️⃣ Clone the Repository**
+```bash
+git clone https://github.com/your-username/neural-rag-tutor.git
+cd neural-rag-tutor
+
+### **2️⃣ Install Dependencies**
+
+pip install -r requirements.txt
+
+
+### **3️⃣ Configure API Key**
+
+📌 Option A — Local file
+Create .streamlit/secrets.toml:
+GEMINI_API_KEY = "your_key_here"
+
+### **4️⃣ Run the App**
+streamlit run study_buddy.py
+
+### 🎮 Usage Guide
+##Mode 1 — Ask Anything (Chat)
+
+Upload a PDF textbook.
+
+Chat with the document — the agent will cite sources (e.g., 📘 [Source: PDF]).
+
+This builds your Dynamic Context for the quiz.
+
+##Mode 2 — Quiz Me (Exam Prep)
+
+Select sources: Uploaded PDF, My Chat History, or both (Data Fusion).
+
+Choose difficulty: Easy / Medium / Hard.
+
+Choose type: Text / MCQ.
+
+Click Start Quiz.
+
+| Action       | Outcome                                                         |
+| ------------ | --------------------------------------------------------------- |
+| **Get Hint** | Tutor Agent provides a clue without revealing the answer        |
+| **Skip**     | Archives the question and fetches a new one                     |
+| **Submit**   | Grader Agent evaluates the answer and gives instant feedback    |
+| **Review**   | View all past questions and answers in the *Past Questions Log* |
+
+
+📦 neural-rag-tutor
+ ┣ 📜 study_buddy.py             # Main Streamlit app, UI, and all Agent classes
+ ┣ 📜 requirements.txt           # Python dependencies
+ ┣ 📜 user_session_state.json    # Auto-created session persistence file
+ ┣ 📂 .streamlit                 # Optional folder for secrets.toml
+ ┗ 📄 README.md                  # Project documentation
 
 
 
-
-    🔑 Key Features (Rubric Alignment)
-This project demonstrates mastery of 5 Key Concepts from the Agent course:
-
-1. Multi-Agent System (Sequential & Specialized)
-Professor Agent: Uses "One-Shot Prompting" to generate structured JSON questions (Text or MCQ) strictly from the provided context. Includes self-correction logic to ensure the answer key matches the options.
-
-HybridQA Agent: A router that decides whether to answer from the PDF (citing sources) or use General Knowledge.
-
-Tutor Agent: Provides pedagogical scaffolding (hints) without revealing answers.
-
-Grader Agent: Performs semantic evaluation, comparing the user's input against the model's answer key using fuzzy matching logic.
-
-2. Custom Tools
-DocumentIngestionTool: A custom Python class that handles binary PDF stream processing, sanitizes text, and prepares it for the context window.
-
-ObservabilityTool: A custom instrumentation class that tracks agent latency (speed) and execution frequency, visualizing real-time metrics in a sidebar dashboard.
-
-EvaluationTool: Implements "Human-in-the-loop" reinforcement, allowing users to rate questions (Thumbs Up/Down) to log quality metrics.
-
-3. Sessions & Memory (Persistence)
-Persistence: Uses a SessionManager to serialize user state (user_session_state.json) to disk. This ensures that scores, chat history, and uploaded documents survive page reloads.
-
-Memory Bank: Maintains a rigorous history of past quiz questions, allowing users to review their mistakes.
-
-4. Context Engineering (Compaction)
-Context Fusion: Dynamically merges textbook data with conversation history based on user selection.
-
-Compression: A background logic (ContextCompressor) summarizes chat logs if they exceed 5 turns, ensuring the LLM context window remains optimized for speed and cost.
-
-5. Observability & Evaluation
-Real-time Dashboard: A sidebar panel shows Total Agent Calls, Average Latency, and an "Agent Quality Score".
-
-Feedback Loop: Users can rate generated questions (Thumbs Up/Down), providing signal for future fine-tuning.
