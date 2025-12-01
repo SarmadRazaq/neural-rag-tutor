@@ -46,7 +46,7 @@ graph TD
     
     Grader -->|Log Metric| Observability[📊 Observability Tool]
     Tutor -->|Log Metric| Observability
-
+```
 
 ### 📚 Neural RAG Tutor — Multi-Agent Study Buddy
 ### 🔑 Key Features (Rubric Alignment)
