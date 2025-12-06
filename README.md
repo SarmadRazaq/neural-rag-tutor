@@ -7,7 +7,7 @@
 ![Status](https://img.shields.io/badge/Status-Deployed-success)
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.31-red)
-![AI](https://img.shields.io/badge/Gemini-1.5%20Flash-orange)
+![AI](https://img.shields.io/badge/gemini-2.5%20Flash-orange)
 
 ---
 
